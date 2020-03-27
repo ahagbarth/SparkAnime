@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-    <b-navbar toggleable="lg" type="dark">
+    <b-navbar toggleable="lg" sticky="true" type="dark">
       <b-navbar-brand href="#">NavBar</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 

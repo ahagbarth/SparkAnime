@@ -1,0 +1,112 @@
+<template>
+  <div>
+    <b-container fluid class="body">
+      <div class="animeList">
+        <h4>Popular This Season</h4>
+        <b-row cols="5">
+          <div
+            v-for="(anime, index) in newMostPopularAnimeOfThisSeason.media"
+            :key="index"
+          >
+            <b-col>
+              <div>
+                <b-card
+                  class="card animeCard"
+                  overlay
+                  :img-src="anime.coverImage.extraLarge"
+                  img-alt="Card Image"
+                  text-variant="white"
+                  :title="anime.title.english"
+                  img-height="250"
+                  border-variant="dark"
+                >
+                  <div class="cardText card-img-overlay d-flex flex-column">
+                    <h5 class="card-title"></h5>
+                    <div class="description">{{ anime.description }}</div>
+                    <div class="mt-auto genres">{{ anime.genres.join() }}</div>
+                  </div>
+                </b-card>
+              </div>
+            </b-col>
+          </div>
+        </b-row>
+      </div>
+      <div class="animeList">
+        <h4>Recently Added</h4>
+        <b-row cols="5">
+          <div v-for="(anime, index2) in recentlyUpdated.media" :key="index2">
+            <b-col>
+              <div>
+                <b-card
+                  class="card"
+                  overlay
+                  :img-src="anime.coverImage.extraLarge"
+                  img-alt="Card Image"
+                  text-variant="white"
+                  :title="anime.title.english"
+                  img-height="250"
+                  border-variant="dark"
+                >
+                  <div class="cardText card-img-overlay d-flex flex-column">
+                    <h5 class="card-title"></h5>
+                    <div class="description">{{ anime.description }}</div>
+                    <div class="mt-auto genres">{{ anime.genres.join() }}</div>
+                  </div>
+                </b-card>
+              </div>
+            </b-col>
+          </div>
+        </b-row>
+      </div>
+    </b-container>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from "vuex";
+export default {
+  name: "Body",
+  components: {},
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters(["newMostPopularAnimeOfThisSeason", "recentlyUpdated"])
+  },
+  beforeCreate() {
+    this.$store.dispatch("newMostPopularAnimeOfThisSeason", {
+      perPage: 10,
+      season: "WINTER",
+      seasonYear: 2020
+    }),
+      this.$store.dispatch("recentlyUpdated", {
+        perPage: 10
+      });
+  }
+};
+</script>
+
+<style scoped>
+.animeList {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+.card {
+  margin-top: 1rem;
+}
+
+.cardText {
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+.animeCard:hover .cardText {
+  opacity: 85%;
+  background-color: black;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>

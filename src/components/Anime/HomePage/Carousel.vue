@@ -12,7 +12,7 @@
       style="text-shadow: 1px 1px 2px #333;"
     >
       <div
-        v-for="(anime, index) in newMostPopularAnimeOfThisSeason.media"
+        v-for="(anime, index) in carouselAnime.media"
         :key="index"
       >
         <b-carousel-slide
@@ -35,7 +35,7 @@
 import { mapGetters } from "vuex";
 // import { mapState } from 'vuex';
 export default {
-  name: "HelloWorld",
+  name: "Carousel",
   data() {
     return {
       slide: 0,
@@ -43,10 +43,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["newMostPopularAnimeOfThisSeason"])
+    ...mapGetters(["carouselAnime"])
   },
   beforeCreate() {
-    this.$store.dispatch("newMostPopularAnimeOfThisSeason");
+    this.$store.dispatch("carouselAnime");
   }
 };
 </script>
