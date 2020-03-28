@@ -3,6 +3,7 @@
     <b-container fluid class="body">
       <div class="animeList">
         <h4>Popular This Season</h4>
+        {{ selectedAnime }}
         <b-row cols="5">
           <div
             v-for="(anime, index) in newMostPopularAnimeOfThisSeason.media"
@@ -19,8 +20,9 @@
                   :title="anime.title.english"
                   img-height="250"
                   border-variant="dark"
+                  
                 >
-                  <div class="cardText card-img-overlay d-flex flex-column">
+                  <div class="cardText card-img-overlay d-flex flex-column" v-on:click="selectAnime(anime.id)">
                     <h5 class="card-title"></h5>
                     <div class="description">{{ anime.description }}</div>
                     <div class="mt-auto genres">{{ anime.genres.join() }}</div>
@@ -38,7 +40,7 @@
             <b-col>
               <div>
                 <b-card
-                  class="card"
+                  class="card animeCard"
                   overlay
                   :img-src="anime.coverImage.extraLarge"
                   img-alt="Card Image"
@@ -47,7 +49,7 @@
                   img-height="250"
                   border-variant="dark"
                 >
-                  <div class="cardText card-img-overlay d-flex flex-column">
+                  <div class="cardText card-img-overlay d-flex flex-column" v-on:click="selectAnime(anime.id)">
                     <h5 class="card-title"></h5>
                     <div class="description">{{ anime.description }}</div>
                     <div class="mt-auto genres">{{ anime.genres.join() }}</div>
@@ -68,12 +70,24 @@ export default {
   name: "Body",
   components: {},
   data() {
-    return {};
+    return {
+      animeId: "3"
+    };
   },
   computed: {
-    ...mapGetters(["newMostPopularAnimeOfThisSeason", "recentlyUpdated"])
+    ...mapGetters([
+      "newMostPopularAnimeOfThisSeason",
+      "recentlyUpdated",
+      "selectedAnime"
+    ])
+  },
+  methods: {
+    selectAnime: function(id){
+      this.$store.dispatch("selectedAnime", id)
+    }
   },
   beforeCreate() {
+    
     this.$store.dispatch("newMostPopularAnimeOfThisSeason", {
       perPage: 10,
       season: "WINTER",
@@ -81,7 +95,7 @@ export default {
     }),
       this.$store.dispatch("recentlyUpdated", {
         perPage: 10
-      });
+      })
   }
 };
 </script>
@@ -90,7 +104,7 @@ export default {
 .animeList {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  color: white;
+  color: #fcec3d;
 }
 .card {
   margin-top: 1rem;
@@ -103,10 +117,14 @@ export default {
 .animeCard:hover .cardText {
   opacity: 85%;
   background-color: black;
+  border-right-color: #fcec3d;
 }
 
 .description {
   overflow: hidden;
   text-overflow: ellipsis;
+    cursor:pointer;
+
 }
+
 </style>

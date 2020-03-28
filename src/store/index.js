@@ -7,11 +7,12 @@ Vue.use(Vuex)
 
 
 export default new Vuex.Store({
-  
+
   state: {
     newMostPopularAnimeOfThisSeason: [{title:'', coverImage:''}],
     carouselAnime: [{}],
-    recentlyUpdated: [{}]
+    recentlyUpdated: [{}],
+    selectedAnime:""
   },
   mutations: {
     NEW_MOST_POPULAR_ANIME_SEASON(state, value){
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     RECENTLY_UPDATED(state, value){
       state.recentlyUpdated = value
+    },
+    SELECTED_ANIME(state, value){
+      state.selectedAnime = value
     }
   },
   actions: {
@@ -86,6 +90,7 @@ export default new Vuex.Store({
         query test($perPage: Int!) {
           Page(perPage: $perPage){
             media(type:ANIME ,status:RELEASING, sort:UPDATED_AT_DESC){
+              id
               status
               description
               updatedAt
@@ -114,14 +119,16 @@ export default new Vuex.Store({
      
       commit('RECENTLY_UPDATED', response.data);
     },
-
+    selectedAnime(context, value){
+      context.commit('SELECTED_ANIME', value)
+    }
   },
   modules: {
   },
   getters:{
     newMostPopularAnimeOfThisSeason: state => state.newMostPopularAnimeOfThisSeason.Page,
     carouselAnime: state => state.carouselAnime.Page,
-    recentlyUpdated: state => state.recentlyUpdated.Page
-
+    recentlyUpdated: state => state.recentlyUpdated.Page,
+    selectedAnime: state => state.selectedAnime
   }
 })
