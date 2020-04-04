@@ -3,14 +3,14 @@
     <b-row>
       <b-col></b-col>
       <b-col cols="8">
-        <div class=" animeBanner">
+        <div class="container animeBanner">
           <b-row align-v="start">
             <img
-              class="bannerImage "
+              class="bannerImage"
               :src="selectedAnime.Media.bannerImage"
               alt=""
             />
-            <div style="width:100%; margin-top:1vh; ">
+            <div style="margin-top: 1vh;">
               <b-row>
                 <b-col cols="3">
                   <div>
@@ -21,35 +21,114 @@
                     />
                   </div>
                 </b-col>
-                <b-col
-                  cols="9"
-                  class="mainComponent"
-                  style="background-color:#3a3a3a;"
-                >
-                  <b-row align-v="start" class="Title">
-                    <h1>{{ selectedAnime.Media.title.romaji }}</h1>
-                  </b-row>
-                  <div>
-                    {{ selectedAnime.Media.genres.join() }}
-                  </div>
-                  <div>
-                    {{ selectedAnime.Media.description }}
+
+                <b-col cols="9" class="mainComponent">
+                  <div
+                    class="container"
+                    style="background-color: #3a3a3a; height: 100%;"
+                  >
+                    <b-row align-v="start" class="Title">
+                      <h1>
+                        {{ selectedAnime.Media.title.romaji }}
+                      </h1>
+                    </b-row>
+                    <div>
+                      {{ selectedAnime.Media.genres.join() }}
+                    </div>
+                    <div class="text-justify">
+                      {{ selectedAnime.Media.description }}
+                    </div>
                   </div>
                 </b-col>
               </b-row>
             </div>
-            <div class="bodyComponent">
+            <div style="margin-top: 1vh;">
               <b-row>
-                <b-col>{{ selectedAnime.Media.startDate }}</b-col>
-                <b-col>{{ selectedAnime.Media.endDate }}</b-col>
-                <b-col>{{ selectedAnime.Media.status }}</b-col>
-                <b-col>{{ selectedAnime.Media.trending }}</b-col>
-                <b-col>{{ selectedAnime.Media.averageScore }}/100</b-col>
+                <b-col cols="6">
+                  <div
+                    class="container-fluid"
+                    style="background-color: #3a3a3a; height: 100%;"
+                  >
+                    <b-row style="color: white;">
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Start Date</div>
+                        {{ selectedAnime.Media.startDate.day }}/{{
+                          selectedAnime.Media.startDate.month
+                        }}/{{ selectedAnime.Media.startDate.year }}
+                      </b-col>
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">End Date</div>
+                        {{ selectedAnime.Media.endDate.day }}/{{
+                          selectedAnime.Media.endDate.month
+                        }}/{{ selectedAnime.Media.endDate.year }}
+                      </b-col>
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Episodes</div>
+                        {{ selectedAnime.Media.episodes }}
+                      </b-col>
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Next Episode</div>
+                        {{ selectedAnime.Media.nextAiringEpisode }}
+                      </b-col>
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Season</div>
+                        {{ selectedAnime.Media.season }}
+                      </b-col>
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Status</div>
+                        {{ selectedAnime.Media.status }}
+                      </b-col>
+                    </b-row>
+                  </div>
+                </b-col>
+
+                <b-col cols="6" class="mainComponent">
+                  <div
+                    class="container-fluid"
+                    style="background-color: #3a3a3a; height: 100%;"
+                  >
+                    <b-row style="color: white;">
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Average Score</div>
+                        {{ selectedAnime.Media.averageScore }}/100
+                      </b-col>
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Popularity</div>
+                        {{ selectedAnime.Media.popularity }}
+                      </b-col>
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Trending</div>
+                        {{ selectedAnime.Media.trending }}
+                      </b-col>
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Status</div>
+                        {{ selectedAnime.Media.averageScore }}/100
+                      </b-col>
+                      <b-col class="animeInfoText" cols="4">
+                        <div style="font-size: 1rem;">Status</div>
+                        {{ selectedAnime.Media.averageScore }}/100
+                      </b-col>
+                    </b-row>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
+            <div style="margin-top: 1vh; width:100%">
+              <b-row>
+                <b-col  class="mainComponent">
+                  <div
+                    class="container-fluid"
+                    style="background-color: #3a3a3a; height: 100%;"
+                  >
+                    sadfasdf
+                  </div>
+                </b-col>
               </b-row>
             </div>
           </b-row>
         </div>
       </b-col>
+
       <b-col></b-col>
     </b-row>
   </b-container>
@@ -61,8 +140,8 @@ import { mapGetters } from "vuex";
 export default {
   name: "AnimeDescriptionPage",
   computed: {
-    ...mapGetters(["selectedAnime"])
-  }
+    ...mapGetters(["selectedAnime"]),
+  },
   // beforeCreate(){
   //   this.$store.dispatch('selectedAnime', this.selectedAnimeId)
   // }
@@ -86,16 +165,28 @@ export default {
 }
 .mainComponent {
   color: white;
+  padding-right: -0.5vw;
 }
 .Title {
   color: white;
 }
-.bodyComponent {
+.bodyComponentHeader {
+  width: 100%;
+  margin-top: 1vh;
+  background-color: #3a3a3a;
+  height: 6rem;
+  color: white;
+}
+.bodyComponentMain {
   width: 100%;
   margin-top: 1vh;
   margin-bottom: 2rem;
   background-color: #3a3a3a;
-  height: 6rem;
+  height: 60rem;
   color: white;
+}
+.animeInfoText {
+  font-size: 1.5rem;
+  margin-top: 2vh;
 }
 </style>

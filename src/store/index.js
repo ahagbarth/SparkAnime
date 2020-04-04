@@ -140,6 +140,8 @@ export default new Vuex.Store({
             }
             nextAiringEpisode {
               id
+              airingAt
+              timeUntilAiring
             }
             description
             startDate {
@@ -194,7 +196,9 @@ export default new Vuex.Store({
               }
             }
             siteUrl
-            
+            season
+            episodes
+            favourites
           }
           }
         
