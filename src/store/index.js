@@ -9,10 +9,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 
   state: {
+    selectedAnimeId:"",
     newMostPopularAnimeOfThisSeason: [{title:'', coverImage:''}],
     carouselAnime: [{}],
     recentlyUpdated: [{}],
-    selectedAnime:""
+    selectedAnime:[{}]
   },
   mutations: {
     NEW_MOST_POPULAR_ANIME_SEASON(state, value){
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     RECENTLY_UPDATED(state, value){
       state.recentlyUpdated = value
+    },
+    SELECTED_ANIME_ID(state, value){
+      state.selectedAnimeId = value
     },
     SELECTED_ANIME(state, value){
       state.selectedAnime = value
@@ -119,9 +123,92 @@ export default new Vuex.Store({
      
       commit('RECENTLY_UPDATED', response.data);
     },
-    selectedAnime(context, value){
-      context.commit('SELECTED_ANIME', value)
-    }
+    selectedAnimeId(context, value){
+      context.commit('SELECTED_ANIME_ID', value)
+    },
+    async selectedAnime({ commit }, id) {
+      const response = await graphqlClient.query({
+        query: gql`
+        query selectedAnime($id: Int!) {
+          Media(id: $id) {
+            seasonYear
+            title {
+              romaji
+              english
+              native
+              userPreferred
+            }
+            nextAiringEpisode {
+              id
+            }
+            description
+            startDate {
+              year
+              month
+              day
+            }
+            endDate {
+              year
+              month
+              day
+            }
+            status
+            trailer {
+              id
+            }
+            coverImage {
+              extraLarge
+              large
+              medium
+              color
+            }
+            bannerImage
+            updatedAt
+            genres
+            averageScore
+            averageScore
+            trending
+            popularity
+            studios {
+              edges {
+                id
+                node {
+                  name
+                }
+              }
+            }
+            externalLinks {
+              site
+            }
+            streamingEpisodes {
+              title
+              thumbnail
+              url
+              site
+            }
+            recommendations {
+              edges {
+                node {
+                  id
+                }
+              }
+            }
+            siteUrl
+            
+          }
+          }
+        
+        `,  
+          variables:{
+            id:id                  
+          }
+      });
+     
+      commit('SELECTED_ANIME', response.data);
+    },
+    
+
+
   },
   modules: {
   },
@@ -129,6 +216,7 @@ export default new Vuex.Store({
     newMostPopularAnimeOfThisSeason: state => state.newMostPopularAnimeOfThisSeason.Page,
     carouselAnime: state => state.carouselAnime.Page,
     recentlyUpdated: state => state.recentlyUpdated.Page,
+    selectedAnimeId: state => state.selectedAnimeId,
     selectedAnime: state => state.selectedAnime
   }
 })
