@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <b-container fluid class="AnimePage">
     <b-row>
       <b-col></b-col>
       <b-col cols="8">
@@ -10,7 +10,7 @@
               :src="selectedAnime.Media.bannerImage"
               alt=""
             />
-            <div style="margin-top: 1vh;">
+            <div style="margin-top: 2.5vh;">
               <b-row>
                 <b-col cols="3">
                   <div>
@@ -27,12 +27,10 @@
                     class="container"
                     style="background-color: #3a3a3a; height: 100%;"
                   >
-                    <b-row align-v="start" class="Title">
-                      <h1>
+                      <h1 style="">
                         {{ selectedAnime.Media.title.romaji }}
                       </h1>
-                    </b-row>
-                    <div>
+                    <div style="padding-bottom:2vh; padding-top:1vh">
                       {{ selectedAnime.Media.genres.join() }}
                     </div>
                     <div class="text-justify">
@@ -42,7 +40,7 @@
                 </b-col>
               </b-row>
             </div>
-            <div style="margin-top: 1vh;">
+            <div style="margin-top: 2.5vh; ">
               <b-row>
                 <b-col cols="6">
                   <div
@@ -66,9 +64,8 @@
                         <div style="font-size: 1rem;">Episodes</div>
                         {{ selectedAnime.Media.episodes }}
                       </b-col>
-                      <b-col class="animeInfoText" cols="4">
-                        <div style="font-size: 1rem;">Next Episode</div>
-                        {{ selectedAnime.Media.nextAiringEpisode }}
+                      <b-col class="animeInfoText" cols="2">
+                        <div style="font-size: 1rem;width:50%"></div>
                       </b-col>
                       <b-col class="animeInfoText" cols="4">
                         <div style="font-size: 1rem;">Season</div>
@@ -82,12 +79,12 @@
                   </div>
                 </b-col>
 
-                <b-col cols="6" class="mainComponent">
+                <b-col cols="6" class="mainComponent" >
                   <div
                     class="container-fluid"
                     style="background-color: #3a3a3a; height: 100%;"
                   >
-                    <b-row style="color: white;">
+                    <b-row style="color: white;padding-bottom:1vh">
                       <b-col class="animeInfoText" cols="4">
                         <div style="font-size: 1rem;">Average Score</div>
                         {{ selectedAnime.Media.averageScore }}/100
@@ -101,30 +98,18 @@
                         {{ selectedAnime.Media.trending }}
                       </b-col>
                       <b-col class="animeInfoText" cols="4">
-                        <div style="font-size: 1rem;">Status</div>
-                        {{ selectedAnime.Media.averageScore }}/100
+                        <div style="font-size: 1rem;"></div>
                       </b-col>
                       <b-col class="animeInfoText" cols="4">
-                        <div style="font-size: 1rem;">Status</div>
-                        {{ selectedAnime.Media.averageScore }}/100
+                        <div style="font-size: 1rem;">Favourites</div>
+                        {{ selectedAnime.Media.favourites }}
                       </b-col>
                     </b-row>
                   </div>
                 </b-col>
               </b-row>
             </div>
-            <div style="margin-top: 1vh; width:100%">
-              <b-row>
-                <b-col  class="mainComponent">
-                  <div
-                    class="container-fluid"
-                    style="background-color: #3a3a3a; height: 100%;"
-                  >
-                    sadfasdf
-                  </div>
-                </b-col>
-              </b-row>
-            </div>
+            
           </b-row>
         </div>
       </b-col>
@@ -188,5 +173,8 @@ export default {
 .animeInfoText {
   font-size: 1.5rem;
   margin-top: 2vh;
+}
+.AnimePage{
+  padding-bottom: 2vh
 }
 </style>
