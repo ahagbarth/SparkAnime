@@ -13,7 +13,8 @@ export default new Vuex.Store({
     newMostPopularAnimeOfThisSeason: [{title:'', coverImage:''}],
     carouselAnime: [{}],
     recentlyUpdated: [{}],
-    selectedAnime:[{}]
+    selectedAnime:[{}],
+    mostPopularOfAllTime:[{}]
   },
   mutations: {
     NEW_MOST_POPULAR_ANIME_SEASON(state, value){
@@ -30,6 +31,9 @@ export default new Vuex.Store({
     },
     SELECTED_ANIME(state, value){
       state.selectedAnime = value
+    },
+    MOST_POPULAR_OF_ALL_TIME(state, value){
+      state.mostPopularOfAllTime = value
     }
   },
   actions: {
@@ -206,11 +210,45 @@ export default new Vuex.Store({
           variables:{
             id:id                  
           }
-      });
+      })
      
       commit('SELECTED_ANIME', response.data);
     },
-    
+    async mostPopularOfAllTime ({ commit }, {perPage}) {
+      const response = await graphqlClient.query({
+        query: gql`
+        query mostPopularOfAllTime($perPage: Int!) {
+          Page(perPage: $perPage){
+            media(type:ANIME ,status:RELEASING, sort:UPDATED_AT_DESC){
+              id
+              status
+              description
+              updatedAt
+              genres
+              title {
+                romaji
+                english
+                native
+                userPreferred
+              }
+              coverImage {
+                extraLarge
+                large
+                medium
+                color
+              } 
+            }
+            }
+          }
+        
+        `,  
+          variables:{
+            perPage:perPage,                  
+          }
+      });
+     
+      commit('MOST_POPULAR_OF_ALL_TIME', response.data);
+    },
 
 
   },
@@ -221,6 +259,7 @@ export default new Vuex.Store({
     carouselAnime: state => state.carouselAnime.Page,
     recentlyUpdated: state => state.recentlyUpdated.Page,
     selectedAnimeId: state => state.selectedAnimeId,
-    selectedAnime: state => state.selectedAnime
+    selectedAnime: state => state.selectedAnime,
+    mostPopularOfAllTime: state => state.mostPopularOfAllTime
   }
 })
