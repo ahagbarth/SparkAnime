@@ -5,7 +5,7 @@
       <router-link to="/about">About</router-link>
     </div> -->
     <b-navbar toggleable="lg" sticky="true" type="dark">
-      <b-navbar-brand href="#">SparkAnime</b-navbar-brand>
+       <router-link to="/"><b-navbar-brand href="">SparkAnime</b-navbar-brand></router-link>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>

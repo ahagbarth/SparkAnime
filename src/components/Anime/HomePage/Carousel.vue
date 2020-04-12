@@ -13,17 +13,25 @@
     >
       <div
         v-for="(anime, index) in carouselAnime.media"
-        :key="index"
+        :key="index" class="carouselImages"
       >
+       <router-link
+                    :to="{
+                      name: 'AnimeDescriptionPage',
+                      params: { id: anime.id },
+                    }"
+                  >
         <b-carousel-slide
           img-height="200"
           :img-src="anime.bannerImage"
           img-alt="Blank image"
         >
+             
           <h1>
             {{ anime.title.english }}
           </h1>
         </b-carousel-slide>
+       </router-link>
       </div>
 
       <!-- Slide with blank fluid image to maintain slide aspect ratio -->
@@ -54,5 +62,8 @@ export default {
 <style scoped>
 .carousel {
   max-height: 50%;
+}
+.carouselImages{
+  max-height: 20vh;
 }
 </style>
