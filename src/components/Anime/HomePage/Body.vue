@@ -3,84 +3,91 @@
     <b-container fluid class="body">
       <div class="animeList">
         <h4>Popular This Season</h4>
-
-        <b-row cols="5">
+        <div class="card-deck">
+          <!-- <b-row cols="5"> -->
           <div
             v-for="(anime, index) in newMostPopularAnimeOfThisSeason.media"
             :key="index"
           >
-            <b-col>
-              <div>
-                <b-card
-                  class="card animeCard"
-                  overlay
-                  :img-src="anime.coverImage.extraLarge"
-                  img-alt="Card Image"
-                  text-variant="white"
-                  :title="anime.title.english"
-                  img-height="250"
-                  border-variant="dark"
+            <!-- <b-col> -->
+            <div>
+              <b-card
+                class="card animeCard"
+                overlay
+                :img-src="anime.coverImage.extraLarge"
+                img-alt="Card Image"
+                text-variant="white"
+                img-height="250"
+                border-variant="dark"
+              >
+                <template v-slot:footer>
+                  <small class="text-muted"><div class=" d-block text-truncate">{{anime.title.english}}</div></small>
+                </template>
+                <router-link
+                  :to="{
+                    name: 'AnimeDescriptionPage',
+                    params: { id: anime.id }
+                  }"
                 >
-                  <router-link
-                    :to="{
-                      name: 'AnimeDescriptionPage',
-                      params: { id: anime.id },
-                    }"
+                  <div
+                    class="cardText card-img-overlay d-flex flex-column"
+                    v-on:click="selectAnime(anime.id)"
                   >
-                    <div
-                      class="cardText card-img-overlay d-flex flex-column"
-                      v-on:click="selectAnime(anime.id)"
-                    >
-                      <h5 class="card-title"></h5>
-                      <div class="description">{{ anime.description }}</div>
-                      <div class="mt-auto genres">
-                        {{ anime.genres.join() }}
-                      </div>
+                    <h5 class="card-title"></h5>
+                    <div class="description">{{ anime.description }}</div>
+                    <div class="mt-auto genres">
+                      {{ anime.genres.join() }}
                     </div>
-                  </router-link>
-                </b-card>
-              </div>
-            </b-col>
+                  </div>
+                </router-link>
+              </b-card>
+            </div>
+            <!-- </b-col> -->
           </div>
-        </b-row>
+        </div>
+        <!-- </b-row> -->
       </div>
       <div class="animeList">
         <h4>Recently Added</h4>
-        <b-row cols="5">
+        <div class="card-deck">
+          <!-- <b-row cols="5"> -->
           <div v-for="(anime, index2) in recentlyUpdated.media" :key="index2">
-            <b-col>
-              <div>
-                <b-card
-                  class="card animeCard"
-                  overlay
-                  :img-src="anime.coverImage.extraLarge"
-                  img-alt="Card Image"
-                  text-variant="white"
-                  :title="anime.title.english"
-                  img-height="250"
-                  border-variant="dark"
-                >
-                  <router-link
-                    :to="{
-                      name: 'AnimeDescriptionPage',
-                      params: { id: anime.id },
-                    }"
-                    ><div
-                      class="cardText card-img-overlay d-flex flex-column"
-                      v-on:click="selectAnime(anime.id)"
-                    >
-                      <h5 class="card-title"></h5>
-                      <div class="description">{{ anime.description }}</div>
-                      <div class="mt-auto genres">
-                        {{ anime.genres.join() }}
-                      </div>
+            <!-- <b-col> -->
+            <div>
+              <b-card
+                class="card animeCard"
+                overlay
+                :img-src="anime.coverImage.extraLarge"
+                img-alt="Card Image"
+                text-variant="white"
+                img-height="250"
+                border-variant="dark"
+              >
+               <template v-slot:footer>
+                  <small class="text-muted"><div class=" d-block text-truncate">{{(anime.title.english || anime.title.romaji )}}</div></small>
+                </template>
+                <router-link
+                  :to="{
+                    name: 'AnimeDescriptionPage',
+                    params: { id: anime.id }
+                  }"
+                  ><div
+                    class="cardText card-img-overlay d-flex flex-column"
+                    v-on:click="selectAnime(anime.id)"
+                  >
+                    <h5 class="card-title"></h5>
+                    <div class="description">{{ anime.description }}</div>
+                    <div class="mt-auto genres">
+                      {{ anime.genres.join() }}
                     </div>
-                  </router-link>
-                </b-card>
-              </div>
-            </b-col>
+                  </div>
+                </router-link>
+              </b-card>
+            </div>
+            <!-- </b-col> -->
           </div>
-        </b-row>
+        </div>
+        <!-- </b-row> -->
       </div>
       <div class="animeList">
         <h4>Most Popular of All Time</h4>
@@ -104,7 +111,7 @@
                   <router-link
                     :to="{
                       name: 'AnimeDescriptionPage',
-                      params: { id: anime.id },
+                      params: { id: anime.id }
                     }"
                     ><div
                       class="cardText card-img-overlay d-flex flex-column"
@@ -134,7 +141,7 @@ export default {
   components: {},
   data() {
     return {
-      animeId: "3",
+      animeId: "3"
     };
   },
   computed: {
@@ -142,28 +149,28 @@ export default {
       "newMostPopularAnimeOfThisSeason",
       "recentlyUpdated",
       "selectedAnimeId",
-      "mostPopularOfAllTime",
-    ]),
+      "mostPopularOfAllTime"
+    ])
   },
   methods: {
-    selectAnime: function (id) {
+    selectAnime: function(id) {
       this.$store.dispatch("selectedAnimeId", id);
       this.$store.dispatch("selectedAnime", id);
-    },
+    }
   },
   beforeCreate() {
     this.$store.dispatch("newMostPopularAnimeOfThisSeason", {
-      perPage: 10,
+      perPage: 8,
       season: "WINTER",
-      seasonYear: 2020,
+      seasonYear: 2020
     }),
       this.$store.dispatch("recentlyUpdated", {
-        perPage: 10,
+        perPage: 8
       });
     this.$store.dispatch("mostPopularOfAllTime", {
-      perPage: 10,
+      perPage: 8
     });
-  },
+  }
 };
 </script>
 
@@ -181,6 +188,10 @@ export default {
   opacity: 0;
   transition: all 0.4s ease;
   color: white;
+}
+.animeCard {
+  min-width: 15vw;
+  max-width: 15vw;
 }
 .animeCard:hover .cardText {
   opacity: 85%;
