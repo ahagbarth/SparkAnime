@@ -171,7 +171,7 @@ export default {
 .animeList {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  color: #fcec3d;
+  color: white;
 }
 .card {
   margin-top: 1rem;
