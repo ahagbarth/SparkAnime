@@ -51,8 +51,9 @@
       <b-form-select
         v-model="selected"
         :options="options"
+      
         size="sm"
-        class="mt-3 mb-2 rounded-pill"
+        class="mt-3 mb-2 rounded-pill "
       >
         <!-- This slot appears above the options from 'options' prop -->
         <template v-slot:first>
@@ -81,6 +82,11 @@
         ></b-form-radio-group>
       </b-form-group>
     </div>
+    <div>
+
+
+
+    </div>
 
     <div class="filterYear">
       <div class="mt-2 filterTitles">Year: {{ value }}</div>
@@ -96,6 +102,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Filter",
   data() {
@@ -116,7 +123,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped  lang="scss">
+@import "../../scss/custom.scss";
 .filterContainer {
   border-right: 2px dashed #3a3a3a;
   margin-top: 2rem;

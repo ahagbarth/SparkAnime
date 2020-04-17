@@ -260,6 +260,6 @@ export default new Vuex.Store({
     recentlyUpdated: state => state.recentlyUpdated.Page,
     selectedAnimeId: state => state.selectedAnimeId,
     selectedAnime: state => state.selectedAnime,
-    mostPopularOfAllTime: state => state.mostPopularOfAllTime
+    mostPopularOfAllTime: state => state.mostPopularOfAllTime.Page
   }
 })

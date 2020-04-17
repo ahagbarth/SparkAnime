@@ -161,7 +161,7 @@ export default {
 .bodyComponentHeader {
   width: 100%;
   margin-top: 1vh;
-  background-color: #3a3a3a;
+  background-color:#777777;
   height: 6rem;
   color: white;
 }
@@ -169,7 +169,7 @@ export default {
   width: 100%;
   margin-top: 1vh;
   margin-bottom: 2rem;
-  background-color: #3a3a3a;
+  background-color: #777777;
   height: 60rem;
   color: white;
 }
@@ -179,5 +179,6 @@ export default {
 }
 .AnimePage {
   padding-bottom: 2vh;
+
 }
 </style>

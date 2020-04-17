@@ -1,5 +1,5 @@
 <template>
-  <div class="home container-fluid">
+  <div class="home ">
     <Carousel></Carousel>
     <b-container fluid>
       <b-row>
@@ -29,6 +29,8 @@ export default {
 };
 </script>
 <style scoped>
-
+.home{
+  
+}
 
 </style>

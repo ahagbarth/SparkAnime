@@ -8,7 +8,7 @@
       indicators
       background="#ababab"
       img-width="1024"
-      img-height="200"
+
       style="text-shadow: 1px 1px 2px #333;"
     >
       <div
@@ -22,12 +22,12 @@
                     }"
                   >
         <b-carousel-slide
-          img-height="200"
+
           :img-src="anime.bannerImage"
           img-alt="Blank image"
         >
              
-          <h1>
+          <h1 class="animeTitle">
             {{ anime.title.english }}
           </h1>
         </b-carousel-slide>
@@ -66,4 +66,10 @@ export default {
 .carouselImages{
   max-height: 20vh;
 }
+.animeTitle{
+  font-family: MonuMonumentExtended-bold;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
 </style>
