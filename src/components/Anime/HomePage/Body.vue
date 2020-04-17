@@ -248,5 +248,6 @@ export default {
 .mainPageTitle {
   font-size: 1.75rem;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 </style>

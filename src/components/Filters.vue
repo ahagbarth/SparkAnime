@@ -135,7 +135,7 @@ export default {
 }
 .filterTitles {
   text-align: left;
-  color: #b7b7b7;
+  color: #ffba00;
 }
 .filterSeason {
   min-width: 100%;
