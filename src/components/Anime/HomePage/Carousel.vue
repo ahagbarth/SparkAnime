@@ -1,13 +1,12 @@
 <template>
   <div class="carousel">
     <b-carousel
-      id="carousel-1"
-      v-model="slide"
+      id="carousel"
+      v-model="slide" 
       :interval="4000"
       controls
       indicators
-      background="#ababab"
-      img-width="1024"
+      background="none"
 
       style="text-shadow: 1px 1px 2px #333;"
     >
@@ -22,9 +21,10 @@
                     }"
                   >
         <b-carousel-slide
-
+      
           :img-src="anime.bannerImage"
           img-alt="Blank image"
+          style="max-height:40vh !important"
         >
              
           <h1 class="animeTitle">
