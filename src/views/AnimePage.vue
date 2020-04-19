@@ -3,10 +3,9 @@
     <div>
       <img
         :src="selectedAnime.Media.bannerImage"
-        class="bannerImage"
+        class="bannerDiv"
         alt="Responsive image"
       />
-      <div style="background-color:black; height:100%; width:100%"></div>
     </div>
 
     <b-container fluid class="AnimePage">
@@ -86,7 +85,7 @@
               <div class="card-body">
                 <div class="card-title relatedTitle">Related Content</div>
 
-                <div class="card-deck">
+                <div class="card-deck container">
                   <div
                     v-for="(anime, index) in selectedAnime.Media.relations
                       .edges"
@@ -132,7 +131,7 @@
               <div class="card-body">
                 <div class="card-title relatedTitle">Watch Episodes</div>
 
-                <div class="card-deck">
+                <div class="card-deck container-fluid">
                   <div
                     v-for="(anime, index) in selectedAnime.Media
                       .streamingEpisodes"
@@ -140,15 +139,18 @@
                   >
                     <!-- <b-col> -->
                     <div class="thumbnail">
-                      <div class=" d-block text-truncate ">{{ anime.title }}</div>
-                      <a :href="anime.url"
-                      >
-                      <b-img
-                        thumbnail
-                        fluid
-                        :src="anime.thumbnail"
-                        alt="Image 1"
-                      ></b-img>
+                      <div class=" d-block text-truncate ">
+                        {{ anime.title }}
+                      </div>
+                      <a :href="anime.url">
+                        <b-img
+                          thumbnail
+                          fluid
+                          class="thumbnailImage"
+                          :src="anime.thumbnail"
+                          alt="Image 1"
+                        ></b-img>
+                        <div class="videoImage"></div>
                       </a>
                     </div>
                   </div>
@@ -159,48 +161,52 @@
             <div class="card w-100 cards descriptionCard">
               <div class="card-body">
                 <div class="card-title relatedTitle">Recommendations</div>
-                <div class="card-deck">
-                  <div
-                    v-for="(anime, index) in selectedAnime.Media.recommendations
-                      .edges"
-                    :key="index"
-                  >
-                    <!-- <b-col> -->
-                    <div>
-                      {{ anime.relationType }}
-                      <router-link
-                        :to="{
-                          name: 'AnimePage',
-                          params: { id: anime.id },
-                        }"
-                      >
-                        <b-card
-                          class="card animeCard"
-                          overlay
-                          :img-src="
-                            anime.node.mediaRecommendation.coverImage.extraLarge
-                          "
-                          img-alt="Card Image"
-                          text-variant="white"
-                          img-height="250"
-                          border-variant="dark"
+                <div class="container">
+                  <div class="card-deck">
+                    <div
+                      v-for="(anime, index) in selectedAnime.Media
+                        .recommendations.edges"
+                      :key="index"
+                    >
+                      <!-- <b-col> -->
+                      <div>
+                        {{ anime.relationType }}
+                        <router-link
+                          :to="{
+                            name: 'AnimePage',
+                            params: { id: anime.id },
+                          }"
                         >
-                          <template v-slot:footer>
-                            <small
-                              ><div class=" d-block text-truncate bold">
-                                {{
-                                  anime.node.mediaRecommendation.title
-                                    .english ||
-                                    anime.node.mediaRecommendation.title.romaji
-                                }}
-                              </div></small
-                            >
-                          </template>
-                        </b-card>
-                      </router-link>
+                          <b-card
+                            class="card animeCard"
+                            overlay
+                            :img-src="
+                              anime.node.mediaRecommendation.coverImage
+                                .extraLarge
+                            "
+                            img-alt="Card Image"
+                            text-variant="white"
+                            img-height="250"
+                            border-variant="dark"
+                          >
+                            <template v-slot:footer>
+                              <small
+                                ><div class=" d-block text-truncate bold">
+                                  {{
+                                    anime.node.mediaRecommendation.title
+                                      .english ||
+                                      anime.node.mediaRecommendation.title
+                                        .romaji
+                                  }}
+                                </div></small
+                              >
+                            </template>
+                          </b-card>
+                        </router-link>
+                      </div>
                     </div>
+                    <!-- </b-col> -->
                   </div>
-                  <!-- </b-col> -->
                 </div>
               </div>
             </div>
@@ -230,11 +236,16 @@ export default {
 </script>
 
 <style scoped>
-.bannerImage {
+.bannerDiv {
   width: 100%;
   min-height: 45vh;
   max-height: 45vh;
 }
+.bannerImage {
+  width: 100%;
+  height: 100%;
+}
+
 .cards {
   border-radius: 1.5rem;
   margin-bottom: 1rem;
@@ -267,11 +278,16 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
 }
-.thumbnail{
+.thumbnail {
   min-width: 25vw;
   max-width: 25vw;
   min-height: 20vh;
   padding-left: 1rem;
-  
 }
+.thumbnailImage:hover {
+  -webkit-box-shadow: 0px 0px 28px -2px rgba(255, 186, 0, 1);
+  -moz-box-shadow: 0px 0px 28px -2px rgba(255, 186, 0, 1);
+  box-shadow: 0px 0px 28px -2px rgba(255, 186, 0, 1);
+}
+
 </style>
