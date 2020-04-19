@@ -13,19 +13,17 @@
             <div style="margin-top: 2.5vh;">
               <b-row>
                 <b-col cols="3">
-                  <div>
                     <img
                       :src="selectedAnime.Media.coverImage.extraLarge"
                       class="coverImage"
                       alt=""
                     />
-                  </div>
                 </b-col>
 
                 <b-col cols="9" class="mainComponent">
                   <div
                     class="container"
-                    style="background-color: #3a3a3a; height: 100%;"
+                    style="background-color: #737474; height: 100%;"
                   >
                     <h1 style="">
                       {{ selectedAnime.Media.title.romaji }}
@@ -45,7 +43,7 @@
                 <b-col cols="6">
                   <div
                     class="container-fluid"
-                    style="background-color: #3a3a3a; height: 100%;"
+                    style="background-color: #737474; height: 100%;"
                   >
                     <b-row style="color: white;">
                       <b-col class="animeInfoText" cols="4">
@@ -82,7 +80,7 @@
                 <b-col cols="6" class="mainComponent">
                   <div
                     class="container-fluid"
-                    style="background-color: #3a3a3a; height: 100%;"
+                    style="background-color: #737474; height: 100%;"
                   >
                     <b-row style="color: white; padding-bottom: 1vh;">
                       <b-col class="animeInfoText" cols="4">
@@ -161,7 +159,7 @@ export default {
 .bodyComponentHeader {
   width: 100%;
   margin-top: 1vh;
-  background-color:#777777;
+  background-color:#737474;
   height: 6rem;
   color: white;
 }
@@ -169,7 +167,7 @@ export default {
   width: 100%;
   margin-top: 1vh;
   margin-bottom: 2rem;
-  background-color: #777777;
+  background-color: #737474;
   height: 60rem;
   color: white;
 }

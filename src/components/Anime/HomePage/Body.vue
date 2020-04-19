@@ -13,7 +13,7 @@
             <div>
               <router-link
                 :to="{
-                  name: 'AnimeDescriptionPage',
+                  name: 'AnimePage',
                   params: { id: anime.id },
                 }"
               >
@@ -50,7 +50,7 @@
             <div>
               <router-link
                 :to="{
-                  name: 'AnimeDescriptionPage',
+                  name: 'AnimePage',
                   params: { id: anime.id },
                 }"
               >
@@ -91,7 +91,7 @@
             <div>
               <router-link
                 :to="{
-                  name: 'AnimeDescriptionPage',
+                  name: 'AnimePage',
                   params: { id: anime.id },
                 }"
               >
@@ -133,7 +133,7 @@
             <div>
               <router-link
                 :to="{
-                  name: 'AnimeDescriptionPage',
+                  name: 'AnimePage',
                   params: { id: anime.id },
                 }"
               >

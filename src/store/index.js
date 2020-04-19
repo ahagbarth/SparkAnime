@@ -172,7 +172,6 @@ export default new Vuex.Store({
             updatedAt
             genres
             averageScore
-            averageScore
             trending
             popularity
             studios {
@@ -183,26 +182,59 @@ export default new Vuex.Store({
                 }
               }
             }
-            externalLinks {
-              site
-            }
             streamingEpisodes {
               title
               thumbnail
               url
               site
             }
-            recommendations {
-              edges {
-                node {
-                  id
-                }
-              }
-            }
+
             siteUrl
             season
             episodes
             favourites
+            recommendations(perPage:4, sort:RATING_DESC){
+              edges {
+                node {
+                  id
+                  rating
+          
+                  mediaRecommendation {
+                    id
+                    title {
+                      romaji
+                      english
+                      native
+                      userPreferred
+                    }
+                    coverImage {
+                      extraLarge
+                      large
+                      medium
+                      color
+                    }
+                  }
+                }
+              }
+            }
+            relations {
+              edges {
+                id
+                relationType
+                node{
+                  title {
+                    romaji
+                    english
+                    native
+                    userPreferred
+                  }
+                  coverImage {
+                    extraLarge
+                    
+                  }
+                }
+              }
+            }
           }
           }
         
