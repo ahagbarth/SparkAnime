@@ -23,7 +23,8 @@ import Filters from "../components/Filters";
 import Body from "../components/Anime/HomePage/Body";
 import PopularThisSeason from "../components/Anime/HomePage/popularThisSeason";
 import RecentlyAdded from "../components/Anime/HomePage/recentlyAdded";
-import HighestRated from "../components/Anime/HomePage/highestRated"
+import HighestRated from "../components/Anime/HomePage/highestRated";
+import MostPopularOfAllTime from "../components/Anime/HomePage/mostPopularOfAllTime"
 
 export default {
   name: "Home",
@@ -33,7 +34,8 @@ export default {
     Filters,
     PopularThisSeason,
     RecentlyAdded,
-    HighestRated
+    HighestRated,
+    MostPopularOfAllTime
   },
   data() {
     return {
