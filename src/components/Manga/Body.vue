@@ -2,63 +2,13 @@
   <div>
     <b-container fluid class="body">
       <div class="animeList">
-        <div class="container">
-          <div class="row">
-            <div class="col-4"></div>
-
-            <div class="mainPageTitle">
-              <router-link to="" style="color:#ffba00; text-decoration:none;">
-                Popular This Season
-                <div class="underline"></div>
-              </router-link>
-            </div>
-            <div class="col-4"></div>
-          </div>
-        </div>
-
-        <div class="card-deck">
-          <!-- <b-row cols="5"> -->
-          <div
-            v-for="(anime, index) in newMostPopularAnimeOfThisSeason.media"
-            :key="index"
-          >
-            <!-- <b-col> -->
-            <div >
-              <router-link
-                :to="{
-                  name: 'AnimePage',
-                  params: { id: anime.id },
-                }"
-              >
-                <b-card
-                  class="card animeCard"
-                  overlay
-                  :img-src="anime.coverImage.extraLarge"
-                  img-alt="Card Image"
-                  text-variant="white"
-                  img-height="250"
-                  border-variant="dark"
-                  
-                >
-                  <template v-slot:footer>
-                    <small
-                      ><div class=" d-block text-truncate bold">
-                        {{ anime.title.english || anime.title.romaji }}
-                      </div></small
-                    >
-                  </template>
-                </b-card>
-              </router-link>
-            </div>
-            <!-- </b-col> -->
-          </div>
-        </div>
         <!-- </b-row> -->
       </div>
       <div class="animeList">
         <div class="container">
           <div class="row">
             <div class="col-4"></div>
+
             <div class="mainPageTitle">
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Recently Added
@@ -70,7 +20,10 @@
         </div>
         <div class="card-deck">
           <!-- <b-row cols="5"> -->
-          <div v-for="(anime, index2) in recentlyUpdated.media" :key="index2">
+          <div
+            v-for="(anime, index2) in recentlyUpdatedManga.media"
+            :key="index2"
+          >
             <!-- <b-col> -->
             <div>
               <router-link
@@ -107,6 +60,7 @@
         <div class="container">
           <div class="row">
             <div class="col-4"></div>
+
             <div class="mainPageTitle">
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Highest Rated
@@ -119,7 +73,7 @@
         <div class="card-deck">
           <!-- <b-row cols="5"> -->
           <div
-            v-for="(anime, index2) in highestRatedAnimeOfAllTime.media"
+            v-for="(anime, index2) in highestRatedMangaOfAllTime.media"
             :key="index2"
           >
             <!-- <b-col> -->
@@ -155,9 +109,11 @@
         <!-- </b-row> -->
       </div>
       <div class="animeList">
+        <h4></h4>
         <div class="container">
           <div class="row">
             <div class="col-4"></div>
+
             <div class="mainPageTitle">
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Most Popular of All Time
@@ -170,7 +126,7 @@
         <div class="card-deck">
           <!-- <b-row cols="5"> -->
           <div
-            v-for="(anime, index2) in mostPopularOfAllTime.media"
+            v-for="(anime, index2) in mostPopularMangaOfAllTime.media"
             :key="index2"
           >
             <!-- <b-col> -->
@@ -216,37 +172,37 @@ export default {
   components: {},
   data() {
     return {
-      animeId: "3",
+      mangaId: "3",
     };
   },
   computed: {
     ...mapGetters([
-      "newMostPopularAnimeOfThisSeason",
-      "recentlyUpdated",
-      "selectedAnimeId",
-      "mostPopularOfAllTime",
-      "highestRatedAnimeOfAllTime",
+      "newMostPopularMangaOfThisSeason",
+      "recentlyUpdatedManga",
+      "selectedMangaId",
+      "mostPopularMangaOfAllTime",
+      "highestRatedMangaOfAllTime",
     ]),
   },
   methods: {
     selectAnime: function(id) {
-      this.$store.dispatch("selectedAnimeId", id);
-      this.$store.dispatch("selectedAnime", id);
+      this.$store.dispatch("selectedMangaId", id);
+      this.$store.dispatch("selectedManga", id);
     },
   },
   beforeCreate() {
-    this.$store.dispatch("newMostPopularAnimeOfThisSeason", {
+    this.$store.dispatch("newMostPopularMangaOfThisSeason", {
       perPage: 10,
       season: "WINTER",
       seasonYear: 2020,
     }),
-      this.$store.dispatch("recentlyUpdated", {
+      this.$store.dispatch("recentlyUpdatedManga", {
         perPage: 10,
       });
-    this.$store.dispatch("mostPopularOfAllTime", {
+    this.$store.dispatch("mostPopularMangaOfAllTime", {
       perPage: 10,
     });
-    this.$store.dispatch("highestRatedAnimeOfAllTime", {
+    this.$store.dispatch("highestRatedMangaOfAllTime", {
       perPage: 10,
     });
   },
@@ -298,6 +254,7 @@ export default {
   font-weight: bold;
   margin-bottom: 1rem;
 }
+
 .underline {
   height: 0.2rem;
   width: 0%;
