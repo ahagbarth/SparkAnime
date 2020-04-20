@@ -22,6 +22,9 @@ import Carousel from "../components/Anime/HomePage/Carousel";
 import Filters from "../components/Filters";
 import Body from "../components/Anime/HomePage/Body";
 import PopularThisSeason from "../components/Anime/HomePage/popularThisSeason";
+import RecentlyAdded from "../components/Anime/HomePage/recentlyAdded";
+import HighestRated from "../components/Anime/HomePage/highestRated"
+
 export default {
   name: "Home",
   components: {
@@ -29,6 +32,8 @@ export default {
     Body,
     Filters,
     PopularThisSeason,
+    RecentlyAdded,
+    HighestRated
   },
   data() {
     return {

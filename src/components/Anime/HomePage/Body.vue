@@ -6,7 +6,10 @@
           <div class="row">
             <div class="col-4"></div>
 
-            <div class="mainPageTitle">
+            <div
+              class="mainPageTitle"
+              @click="changeComponent('PopularThisSeason')"
+            >
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Popular This Season
                 <div class="underline"></div>
@@ -23,7 +26,7 @@
             :key="index"
           >
             <!-- <b-col> -->
-            <div >
+            <div>
               <router-link
                 :to="{
                   name: 'AnimePage',
@@ -38,7 +41,6 @@
                   text-variant="white"
                   img-height="250"
                   border-variant="dark"
-                  
                 >
                   <template v-slot:footer>
                     <small
@@ -59,7 +61,10 @@
         <div class="container">
           <div class="row">
             <div class="col-4"></div>
-            <div class="mainPageTitle">
+            <div
+              class="mainPageTitle"
+              @click="changeComponent('RecentlyAdded')"
+            >
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Recently Added
                 <div class="underline"></div>
@@ -107,7 +112,7 @@
         <div class="container">
           <div class="row">
             <div class="col-4"></div>
-            <div class="mainPageTitle">
+            <div class="mainPageTitle" @click="changeComponent('HighestRated')">
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Highest Rated
                 <div class="underline"></div>
@@ -158,7 +163,10 @@
         <div class="container">
           <div class="row">
             <div class="col-4"></div>
-            <div class="mainPageTitle">
+            <div
+              class="mainPageTitle"
+              @click="changeComponent('MostPopularOfAllTime')"
+            >
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Most Popular of All Time
                 <div class="underline"></div>
@@ -232,6 +240,9 @@ export default {
     selectAnime: function(id) {
       this.$store.dispatch("selectedAnimeId", id);
       this.$store.dispatch("selectedAnime", id);
+    },
+    changeComponent(tab) {
+      this.$parent.currentTab = tab;
     },
   },
   beforeCreate() {
