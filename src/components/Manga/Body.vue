@@ -9,7 +9,10 @@
           <div class="row">
             <div class="col-4"></div>
 
-            <div class="mainPageTitle">
+            <div
+              class="mainPageTitle"
+              @click="changeComponent('RecentlyAddedManga')"
+            >
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Recently Added
                 <div class="underline"></div>
@@ -61,7 +64,7 @@
           <div class="row">
             <div class="col-4"></div>
 
-            <div class="mainPageTitle">
+            <div class="mainPageTitle"  @click="changeComponent('HighestRatedManga')">
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Highest Rated
                 <div class="underline"></div>
@@ -114,7 +117,7 @@
           <div class="row">
             <div class="col-4"></div>
 
-            <div class="mainPageTitle">
+            <div class="mainPageTitle" @click="changeComponent('MostPopularManga')">
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Most Popular of All Time
                 <div class="underline"></div>
@@ -188,6 +191,9 @@ export default {
     selectAnime: function(id) {
       this.$store.dispatch("selectedMangaId", id);
       this.$store.dispatch("selectedManga", id);
+    },
+     changeComponent(tab) {
+      this.$parent.currentTab = tab;
     },
   },
   beforeCreate() {
