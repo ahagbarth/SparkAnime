@@ -5,7 +5,6 @@
         <div class="container">
           <div class="row">
             <div class="col-4"></div>
-
             <div
               class="mainPageTitle"
               @click="changeComponent('PopularThisSeason')"
@@ -221,6 +220,7 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Body",
+  props:{searchValue: String},
   components: {},
   data() {
     return {
@@ -261,6 +261,8 @@ export default {
       perPage: 10,
     });
   },
+ 
+
 };
 </script>
 

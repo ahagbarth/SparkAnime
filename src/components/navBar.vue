@@ -1,9 +1,5 @@
 <template>
-  <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+  <div id="navBar">
     <b-navbar toggleable="lg" class="navBar" sticky="true" type="dark">
       <router-link to="/"
         ><b-navbar-brand href="">SparkAnime</b-navbar-brand></router-link
@@ -41,41 +37,19 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <router-view :searchValue="searchValue" />
   </div>
 </template>
 <script>
-
 export default {
-  components:{
-    
-  },
+  name: "navBar",
   data() {
     return {
       searchValue: "",
     };
   },
-  methods: {
-    searchItem: function() {
-      this.$router.replace({
-        name: "SearchIs",
-        params: { searchResult: this.data },
-      });
-    },
-  },
 };
 </script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background-color: #181818;
-  font-family: MonuMonumentExtended-regular;
-}
-
 #nav {
   padding: 30px;
 }
@@ -92,13 +66,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   z-index: 6;
 }
-
-@font-face {
-  font-family: MonumentExtended-bold;
-  src: url(/assets/fonts/MonumentExtended-Ultrabold.otf) format("otf");
-}
-@font-face {
-  font-family: MonumentExtended-regular;
-  src: url(/assets/fonts/MonumentExtended-regular.otf) format("otf");
+.navBar{
+    position: sticky;
 }
 </style>

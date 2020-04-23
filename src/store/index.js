@@ -26,6 +26,10 @@ export default new Vuex.Store({
     selectedManga:[{}],
     mostPopularMangaOfAllTime:[{}],
     highestRatedMangaOfAllTime:[{}],
+
+    ///////// SEARCH /////////////////
+    searchedResult: [{}],
+
   },
   mutations: {
     ////////// ANIME //////////////
@@ -71,6 +75,10 @@ export default new Vuex.Store({
     },
     HIGHEST_RATED_MANGA_OF_ALL_TIME(state, value){
       state.highestRatedMangaOfAllTime = value
+    },
+    //////////SEARCH ////////////////
+    SEARCHED_RESULT(state, value){
+      state.searchedResult = value
     },
   },
   actions: {
@@ -633,6 +641,45 @@ export default new Vuex.Store({
      
       commit('HIGHEST_RATED_MANGA_OF_ALL_TIME', response.data);
     },
+    ///////////// SEARCH ///////////////////
+
+    async searchedResult({ commit }, {perPage, searchQuery}) {
+      console.log(searchQuery)
+      const response = await graphqlClient.query({
+        query: gql`
+        query searchedResult($perPage: Int!) {
+          Page(perPage: $perPage){
+            media(search:"${searchQuery}"){
+              id
+              status
+              description
+              updatedAt
+              genres
+              title {
+                romaji
+                english
+                native
+                userPreferred
+              }
+              coverImage {
+                extraLarge
+                large
+                medium
+                color
+              } 
+            }
+            }
+          }
+        
+        `,  
+          variables:{
+            perPage:perPage,                  
+          }
+      });
+     
+      commit('SEARCHED_RESULT', response.data);
+    },
+
 
   },
   modules: {
@@ -654,5 +701,8 @@ export default new Vuex.Store({
     selectedManga: state => state.selectedManga,
     mostPopularMangaOfAllTime: state => state.mostPopularMangaOfAllTime.Page,
     highestRatedMangaOfAllTime: state => state.highestRatedMangaOfAllTime.Page,
+    ////////////////SEARCH /////////////////
+    searchedResult: state => state.searchedResult.Page,
+
   }
 })

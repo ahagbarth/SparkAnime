@@ -10,6 +10,7 @@ const routes = [
     name: 'Home',
     component: Home
   },
+ 
   {
     path: '/manga',
     name: 'HomeManga',

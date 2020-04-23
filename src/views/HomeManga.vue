@@ -31,7 +31,7 @@ export default {
     Filters,
     RecentlyAddedManga,
     HighestRatedManga,
-    MostPopularManga
+    MostPopularManga,
   },
   data() {
     return {
