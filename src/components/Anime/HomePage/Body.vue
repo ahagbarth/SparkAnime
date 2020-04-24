@@ -9,6 +9,7 @@
               class="mainPageTitle"
               @click="changeComponent('PopularThisSeason')"
             >
+            
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Popular This Season
                 <div class="underline"></div>

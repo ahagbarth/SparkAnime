@@ -1,15 +1,17 @@
 <template>
   <div class="home ">
-      {{this.searchValue}}
-      <Carousel></Carousel>
-      <b-container fluid>
+    <Carousel></Carousel>
+    <b-container fluid>
       <b-row>
         <b-col cols="3">
           <Filters></Filters>
         </b-col>
         <b-col cols="9">
           <!-- <component v-bind:is="currentTabComponent"></component> -->
-          <component v-bind:is="currentTabComponent" :searchedValue="this.searchValue" ></component>
+          <component
+            v-bind:is="currentTabComponent"
+            :searchedValue="this.searchValue"
+          ></component>
         </b-col>
       </b-row>
     </b-container>
@@ -25,10 +27,10 @@ import PopularThisSeason from "../components/Anime/HomePage/popularThisSeason";
 import RecentlyAdded from "../components/Anime/HomePage/recentlyAdded";
 import HighestRated from "../components/Anime/HomePage/highestRated";
 import MostPopularOfAllTime from "../components/Anime/HomePage/mostPopularOfAllTime";
-import SearchResult from "../components/searchResult"
+import SearchResult from "../components/searchResult";
 export default {
   name: "Home",
-  props:['searchValue'],
+  props: ["searchValue"],
   components: {
     Carousel,
     Body,
@@ -37,7 +39,7 @@ export default {
     RecentlyAdded,
     HighestRated,
     MostPopularOfAllTime,
-    SearchResult  
+    SearchResult,
   },
   data() {
     return {
@@ -50,15 +52,13 @@ export default {
       return this.currentTab;
     },
   },
-  watch:{
-   searchValue(){
-     this.currentTab = "SearchResult"
-   }
-  }
-  
+  watch: {
+    searchValue() {
+      if (this.searchValue.length > 2) {
+        this.currentTab = "SearchResult";
+      }
+    },
+  },
 };
-
-
 </script>
-<style scoped>
-</style>
+<style scoped></style>

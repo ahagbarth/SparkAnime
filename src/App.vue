@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
     <b-navbar toggleable="lg" class="navBar" sticky="true" type="dark">
       <router-link to="/"
         ><b-navbar-brand href="">SparkAnime</b-navbar-brand></router-link
@@ -21,22 +17,28 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
-            <b-form-input
-              size="sm"
-              class="mr-sm-2 inputSearch "
-              placeholder="Search"
-              v-model="searchValue"
-              trim
-            ></b-form-input>
-            <b-button
-              size="sm"
-              class="my-2 my-sm-0 searchComponent"
-              style="background-color:#FF5116; border-color:#FF5116"
-              variant="outline-light"
-              type="submit"
-              @click="searchItem"
-              >Search</b-button
-            >
+            <b-input-group>
+              <b-form-input
+                size="sm"
+                class="inputSearch"
+                v-model="searchValue"
+                placeholder="Search"
+                trim
+              >
+              </b-form-input>
+              <b-input-group-append>
+                
+                <b-button
+                  size="sm"
+                  @click="addTag(newTag)"
+                  :disabled="disabled"
+                  variant="outline-light"
+                  style="background-color:#FF5116; border-color:#FF5116"
+                  type="submit"
+                  ><b-icon icon="search" aria-hidden="true"></b-icon></b-button
+                >
+              </b-input-group-append>
+            </b-input-group>
           </b-nav-form>
         </b-navbar-nav>
       </b-collapse>
@@ -45,11 +47,8 @@
   </div>
 </template>
 <script>
-
 export default {
-  components:{
-    
-  },
+  components: {},
   data() {
     return {
       searchValue: "",

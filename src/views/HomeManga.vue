@@ -7,7 +7,10 @@
           <Filters></Filters>
         </b-col>
         <b-col cols="9">
-          <component v-bind:is="currentTabComponent"></component>
+          <component
+            v-bind:is="currentTabComponent"
+            :searchedValue="this.searchValue"
+          ></component>
         </b-col>
       </b-row>
     </b-container>
@@ -22,9 +25,11 @@ import Body from "../components/Manga/Body";
 import RecentlyAddedManga from "../components/Manga/recentlyAddedManga";
 import HighestRatedManga from "../components/Manga/highestRatedManga";
 import MostPopularManga from "../components/Manga/mostPopularManga";
+import SearchResult from "../components/searchResult";
 
 export default {
   name: "Home",
+  props: ["searchValue"],
   components: {
     Carousel,
     Body,
@@ -32,6 +37,7 @@ export default {
     RecentlyAddedManga,
     HighestRatedManga,
     MostPopularManga,
+    SearchResult,
   },
   data() {
     return {
@@ -44,9 +50,13 @@ export default {
       return this.currentTab;
     },
   },
+  watch: {
+    searchValue() {
+      if (this.searchValue.length > 2) {
+        this.currentTab = "SearchResult";
+      }
+    },
+  },
 };
 </script>
-<style scoped>
-.home {
-}
-</style>
+<style scoped></style>
