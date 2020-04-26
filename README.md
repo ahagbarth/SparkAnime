@@ -2,8 +2,7 @@
 
 ## Webapp to search for and keep up to date with anime's/manga's.
 
-![Homepage]
-(/public/img/ScreenshotHomePage.png)
+![](/public/img/ScreenshotHomePage.png)
 
 ## Project setup
 ```
