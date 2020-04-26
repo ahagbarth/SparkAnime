@@ -1,5 +1,5 @@
 <template>
-  <div class="popularThisSeason">
+  <div class="filteredAnime">
     <b-container fluid class="body">
       <div class="animeList">
         <div class="container">
@@ -194,6 +194,9 @@ export default {
 </script>
 
 <style scoped>
+.filteredAnime{
+  min-height:75vh;
+}
 .animeList {
   margin-top: 2rem;
   margin-bottom: 2rem;

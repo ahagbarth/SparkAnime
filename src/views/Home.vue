@@ -1,5 +1,5 @@
 <template>
-  <div class="home ">
+  <div class="home">
     <Carousel></Carousel>
     <b-container fluid>
       <b-row>
@@ -221,6 +221,7 @@ export default {
 };
 </script>
 <style scoped>
+
 .filterContainer {
   border-right: 2px dashed #3a3a3a;
   margin-top: 2rem;

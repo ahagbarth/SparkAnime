@@ -73,6 +73,9 @@ export default {
 </script>
 
 <style scoped>
+.searchResult{
+  min-height:75vh;
+}
 .animeList {
   margin-top: 2rem;
   margin-bottom: 2rem;
