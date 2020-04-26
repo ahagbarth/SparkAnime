@@ -64,7 +64,10 @@
           <div class="row">
             <div class="col-4"></div>
 
-            <div class="mainPageTitle"  @click="changeComponent('HighestRatedManga')">
+            <div
+              class="mainPageTitle"
+              @click="changeComponent('HighestRatedManga')"
+            >
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Highest Rated
                 <div class="underline"></div>
@@ -117,7 +120,10 @@
           <div class="row">
             <div class="col-4"></div>
 
-            <div class="mainPageTitle" @click="changeComponent('MostPopularManga')">
+            <div
+              class="mainPageTitle"
+              @click="changeComponent('MostPopularManga')"
+            >
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Most Popular of All Time
                 <div class="underline"></div>
@@ -192,7 +198,7 @@ export default {
       this.$store.dispatch("selectedMangaId", id);
       this.$store.dispatch("selectedManga", id);
     },
-     changeComponent(tab) {
+    changeComponent(tab) {
       this.$parent.currentTab = tab;
     },
   },
@@ -201,9 +207,12 @@ export default {
       perPage: 10,
       season: "WINTER",
       seasonYear: 2020,
+      sort: "POPULARITY_DESC",
     }),
       this.$store.dispatch("recentlyUpdatedManga", {
         perPage: 10,
+        seasonYear: 2020,
+        sort: "UPDATED_AT_DESC",
       });
     this.$store.dispatch("mostPopularMangaOfAllTime", {
       perPage: 10,
