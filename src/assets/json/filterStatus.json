@@ -1,0 +1,6 @@
+[
+    { "value": "FINISHED", "text": "Finished" },
+    { "value": "RELEASING", "text": "Releasing" },
+    { "value": "NOT_YET_RELEASED", "text": "Not Yet Released" },
+    { "value": "CANCELLED", "text": "Cancelled" }
+  ]

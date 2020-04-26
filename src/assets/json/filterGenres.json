@@ -1,0 +1,20 @@
+[
+    {"text": "Action", "value": "POPULARITY_DESC"},
+    {"text": "Adventure", "value": "Adventure"},
+    {"text": "Comedy", "value": "Comedy"},
+    {"text": "Drama", "value": "Drama"},
+    {"text": "Ecchi", "value": "Ecchi"},
+    {"text": "Fantasy", "value": "Fantasy"},
+    {"text": "Horror", "value": "Horror"},
+    {"text": "Mahou Shoujo", "value": "Mahou Shoujo"},
+    {"text": "Mecha", "value": "Mecha"},
+    {"text": "Music", "value": "Music"},
+    {"text": "Mystery", "value": "Mystery"},
+    {"text": "Psychological", "value": "Psychological"},
+    {"text": "Romance", "value": "Romance"},
+    {"text": "Sci-Fi", "value": "Sci-Fi"},
+    {"text": "Slice of Life", "value": "Slice of Life"},
+    {"text": "Sports", "value": "Sports"},
+    {"text": "Supernatural", "value": "Supernatural"},
+    {"text": "Thriller", "value": "Thriller"}
+]

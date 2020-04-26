@@ -87,6 +87,7 @@ export default {
             perPage: this.testNum,
             season: "WINTER",
             seasonYear: 2020,
+            sort:'POPULARITY_DESC'
           });
         }
       };
@@ -97,6 +98,7 @@ export default {
       perPage: 30,
       season: "WINTER",
       seasonYear: 2020,
+      sort:'POPULARITY_DESC'
     });
   },
   mounted() {

@@ -1,0 +1,7 @@
+[
+    {"text": "Popularity", "value": "POPULARITY_DESC"},
+    {"text": "Trending", "value": "TRENDING_DESC"},
+    {"text": "Duration", "value": "DURATION_DESC"},
+    {"text": "Status", "value": "STATUS_DESC"},
+    {"text": "Favorites", "value": "FAVORITES_DESC"}
+]

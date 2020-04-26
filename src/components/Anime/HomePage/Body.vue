@@ -9,7 +9,6 @@
               class="mainPageTitle"
               @click="changeComponent('PopularThisSeason')"
             >
-            
               <router-link to="" style="color:#ffba00; text-decoration:none;">
                 Popular This Season
                 <div class="underline"></div>
@@ -18,7 +17,6 @@
             <div class="col-4"></div>
           </div>
         </div>
-
         <div class="card-deck">
           <!-- <b-row cols="5"> -->
           <div
@@ -221,11 +219,25 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Body",
-  props:{searchValue: String},
+  props: {
+    searchValue: String,
+    selectedStatus: String,
+    selectedSeason: String,
+    selectedGenres: String,
+    selectedTags: String,
+    selectedSort: String,
+    valueYear: Number,
+  },
   components: {},
   data() {
     return {
       animeId: "3",
+      status:"",
+      season:"",
+      year:"",
+      sort:"",
+      genre:"",
+      tag:""
     };
   },
   computed: {
@@ -251,6 +263,7 @@ export default {
       perPage: 10,
       season: "WINTER",
       seasonYear: 2020,
+      sort:'POPULARITY_DESC'
     }),
       this.$store.dispatch("recentlyUpdated", {
         perPage: 10,
@@ -261,9 +274,7 @@ export default {
     this.$store.dispatch("highestRatedAnimeOfAllTime", {
       perPage: 10,
     });
-  },
- 
-
+  }
 };
 </script>
 

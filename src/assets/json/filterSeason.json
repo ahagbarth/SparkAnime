@@ -1,0 +1,7 @@
+[
+    { "text": "All", "value": "" },
+    { "text": "Summer", "value": "SUMMER" },
+    { "text": "Autumn", "value": "AUTUMN" },
+    { "text": "Winter", "value": "WINTER" },
+    { "text": "Spring", "value": "SPRING" }
+  ]

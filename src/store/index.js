@@ -104,13 +104,17 @@ export default new Vuex.Store({
       // which is defined above.
       commit('CAROUSEL_ANIME', response.data);
     },
-    async newMostPopularAnimeOfThisSeason({ commit }, {perPage, season, seasonYear}) {
+    async newMostPopularAnimeOfThisSeason({ commit }, {perPage, season, seasonYear, sort, status, genres, tags}) {
+      const sortOrNot = sort ? `sort:${sort},` : '';
+      const statusOrNot = status ? `status:${status},` : '';
+      const genresOrNot = genres ? `genre:"${genres}",` : '';
+      const tagsOrNot = tags ? `tag:"${tags}",` : '';
       // const season = "WINTER";
       const response = await graphqlClient.query({
         query: gql`
         query getMostPopularAnimeThisSeason($perPage: Int,  $seasonYear: Int) {
           Page(perPage: $perPage){
-            media(type:ANIME, season:${season}, seasonYear:$seasonYear, sort:POPULARITY_DESC){
+            media(type:ANIME, season:${season}, seasonYear:$seasonYear, ${sortOrNot} ${statusOrNot} ${genresOrNot} ${tagsOrNot}){
               id
               title {
                 romaji
