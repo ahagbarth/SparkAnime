@@ -1,9 +1,9 @@
-# anime-web
+# SparkAnime
 
 ## Webapp to search for and keep up to date with anime's/manga's.
 
-![GitHub Logo]('/public/img/ScreenshotHomePage.png')
-Format: ![Alt Text](url)
+![Homepage]
+(/public/img/ScreenshotHomePage.png)
 
 ## Project setup
 ```
