@@ -34,7 +34,7 @@
                 <b-card
                   class="card animeCard"
                   overlay
-                  :img-src="anime.coverImage.extraLarge"
+                  :img-src="anime.coverImage.large"
                   img-alt="Card Image"
                   text-variant="white"
                   img-height="250"
@@ -136,7 +136,7 @@
                 <b-card
                   class="card animeCard"
                   overlay
-                  :img-src="anime.coverImage.extraLarge"
+                  :img-src="anime.coverImage.large"
                   img-alt="Card Image"
                   text-variant="white"
                   img-height="250"
@@ -190,7 +190,7 @@
                 <b-card
                   class="card animeCard"
                   overlay
-                  :img-src="anime.coverImage.extraLarge"
+                  :img-src="anime.coverImage.large"
                   img-alt="Card Image"
                   text-variant="white"
                   img-height="250"

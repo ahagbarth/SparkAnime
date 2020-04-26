@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" class="navBar" sticky="true" type="dark">
+    <b-navbar toggleable="lg" class="navBar navbar-expand-md" sticky="true" type="dark">
       <router-link to="/"
         ><b-navbar-brand href="">SparkAnime</b-navbar-brand></router-link
       >
@@ -20,7 +20,7 @@
             <b-input-group>
               <b-form-input
                 size="sm"
-                class="inputSearch"
+                class="inputSearch "
                 v-model="searchValue"
                 placeholder="Search"
                 trim
