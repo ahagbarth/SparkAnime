@@ -114,7 +114,7 @@ export default new Vuex.Store({
         query: gql`
         query getMostPopularAnimeThisSeason($perPage: Int,  $seasonYear: Int) {
           Page(perPage: $perPage){
-            media(type:ANIME, season:${season}, seasonYear:$seasonYear, ${sortOrNot} ${statusOrNot} ${genresOrNot} ${tagsOrNot}){
+            media(type:ANIME, season:${season}, isAdult:false, seasonYear:$seasonYear, ${sortOrNot} ${statusOrNot} ${genresOrNot} ${tagsOrNot}){
               id
               title {
                 romaji
@@ -147,7 +147,7 @@ export default new Vuex.Store({
         query: gql`
         query test($perPage: Int!) {
           Page(perPage: $perPage){
-            media(type:ANIME ,status:RELEASING, sort:UPDATED_AT_DESC){
+            media(type:ANIME ,status:RELEASING, sort:UPDATED_AT_DESC, isAdult:false){
               id
               status
               description
@@ -301,7 +301,7 @@ export default new Vuex.Store({
         query: gql`
         query mostPopularOfAllTime($perPage: Int!) {
           Page(perPage: $perPage){
-            media(type:ANIME , sort:POPULARITY_DESC){
+            media(type:ANIME , sort:POPULARITY_DESC, isAdult:false){
               id
               status
               description
@@ -336,7 +336,7 @@ export default new Vuex.Store({
         query: gql`
         query highestRatedAnimeOfAllTime($perPage: Int!) {
           Page(perPage: $perPage){
-            media(type:ANIME , sort:SCORE_DESC){
+            media(type:ANIME , sort:SCORE_DESC, isAdult:false){
               id
               status
               description
@@ -393,7 +393,7 @@ export default new Vuex.Store({
         query: gql`
         query getMostPopularMangaThisSeason($perPage: Int,  $seasonYear: Int) {
           Page(perPage: $perPage){
-            media(type:MANGA, seasonYear:$seasonYear, sort:POPULARITY_DESC){
+            media(type:MANGA, seasonYear:$seasonYear, sort:POPULARITY_DESC, isAdult:false){
               id
               title {
                 romaji
@@ -426,7 +426,7 @@ export default new Vuex.Store({
         query: gql`
         query test($perPage: Int!) {
           Page(perPage: $perPage){
-            media(type:MANGA ,status:RELEASING, sort:UPDATED_AT_DESC){
+            media(type:MANGA ,status:RELEASING, sort:UPDATED_AT_DESC, isAdult:false){
               id
               status
               description
@@ -580,7 +580,7 @@ export default new Vuex.Store({
         query: gql`
         query mostPopularMangaOfAllTime($perPage: Int!) {
           Page(perPage: $perPage){
-            media(type:MANGA , sort:POPULARITY_DESC){
+            media(type:MANGA , sort:POPULARITY_DESC, isAdult:false){
               id
               status
               description
@@ -615,7 +615,7 @@ export default new Vuex.Store({
         query: gql`
         query highestRatedMangaOfAllTime($perPage: Int!) {
           Page(perPage: $perPage){
-            media(type:MANGA , sort:SCORE_DESC){
+            media(type:MANGA , sort:SCORE_DESC, isAdult:false){
               id
               status
               description
