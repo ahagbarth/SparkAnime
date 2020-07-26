@@ -1,7 +1,6 @@
 <template>
   <b-container class="filterContainer">
     <div style="padding-bottom:2.45rem"></div>
-
     <div>
       <!-- <div>Genres & Tags</div> -->
       <div class="mt-2 filterTitles">Filters</div>
